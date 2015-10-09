@@ -10,10 +10,20 @@ import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
+<<<<<<< HEAD
+import com.amazonaws.services.dynamodbv2.model.*;
+import com.amazonaws.services.dynamodbv2.util.Tables;
+import com.amazonaws.services.rds.model.SourceType;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.AttributeType;
+
+import java.util.ArrayList;
+import java.util.List;
+=======
 import com.amazonaws.services.dynamodbv2.util.Tables;
 
 import java.util.HashMap;
 import java.util.Map;
+>>>>>>> c87e89087e2422f840744d9782cdd931ddbc1822
 
 
 /**
@@ -32,6 +42,17 @@ public class AmazonConnector {
 
         DynamoDB dynamoDB = new DynamoDB(client);
 
+<<<<<<< HEAD
+        if(Tables.doesTableExist(client, "DoubleLibrary")){
+            Table dl = dynamoDB.getTable("DoubleLibrary");
+            client.deleteTable("DoubleLibrary");
+            try {
+                dl.waitForDelete();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+=======
         if (Tables.doesTableExist(client, "libraryDesign")){
             Table ld = dynamoDB.getTable("libraryDesign");
             Item book = new Item();
@@ -82,7 +103,24 @@ public class AmazonConnector {
             System.out.println("<===== Question 7 =====>");
 
             System.out.println("\nJob's done !");
+>>>>>>> c87e89087e2422f840744d9782cdd931ddbc1822
         }
+
+        List<KeySchemaElement> mesclefs = new ArrayList<KeySchemaElement>();
+        mesclefs.add(new KeySchemaElement("primary", KeyType.HASH));
+        mesclefs.add(new KeySchemaElement("secondary", KeyType.RANGE));
+
+        List<AttributeDefinition> mesattributs = new ArrayList<AttributeDefinition>();
+        mesattributs.add(new AttributeDefinition("primary", "S"));
+        mesattributs.add(new AttributeDefinition("secondary", "S"));
+
+        CreateTableRequest t = new CreateTableRequest()
+                .withTableName("DoubleLibrary")
+                .withKeySchema(mesclefs)
+                .withAttributeDefinitions(mesattributs)
+                .withProvisionedThroughput(new ProvisionedThroughput(2L, 2L));
+        client.createTable(t);
+
     }
 
 }
