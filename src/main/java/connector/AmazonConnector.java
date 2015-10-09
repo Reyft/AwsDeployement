@@ -79,6 +79,8 @@ public class AmazonConnector {
                 time=System.currentTimeMillis();
             }
 
+            System.out.println("<===== Question 7 =====>");
+
             System.out.println("\nJob's done !");
         }
     }
