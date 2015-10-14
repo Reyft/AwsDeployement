@@ -25,6 +25,7 @@ public class AmazonConnector {
     public static String usernane = "Remy";
     public static int compt = 3;
 
+    /*
     public static void main(String [] args) {
         ProfileCredentialsProvider provider = new ProfileCredentialsProvider(usernane);
 
@@ -111,5 +112,5 @@ public class AmazonConnector {
             System.out.println("\nJob's done !");
 
         }
-    }
+    }*/
 }
