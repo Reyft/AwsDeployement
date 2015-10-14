@@ -1,0 +1,10 @@
+Yo
+
+J'ai terminé le TP à partir de code de benjamin.
+Je peux lancer une instance de EC2 pour héberger le jar.
+Pour copier le jar sur le serveur, il suffit d'avoir lancé l'instance,
+d'utiliser le script deployOnAmazon.sh avec en parametre l'adresse ip du serveur.
+Ensuite on utilise connexionAmazon.sh avec le meme paramètre et on lance le jar.
+Le rôle a été donné à EC2 qui peut utiliser DynamoDB du coup.
+
+Si t'as des question, ne te gêne pas. Bisous.
